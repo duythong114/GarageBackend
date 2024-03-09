@@ -21,7 +21,7 @@ let createUser = (req, res) => {
 let postUser = async (req, res) => {
     let message = await CRUDService.createNewUser(req.body);
     console.log(message)
-    return res.send('Post User successfully')
+    return res.send('Sign Up New User Successfully')
 }
 
 let getUser = async (req, res) => {
@@ -57,7 +57,7 @@ let deleteUser = async (req, res) => {
     let id = req.query.id;
     if (id) {
         await CRUDService.deleteUserById(id)
-        return res.send('Delete the user successfully')
+        return res.send('Delete The User Succesfully')
     }
     else {
         return res.send('User not found')

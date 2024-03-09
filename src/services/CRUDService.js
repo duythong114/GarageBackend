@@ -41,10 +41,7 @@ let hashUserPassword = (password) => {
 let getAllUsers = () => {
     return new Promise(async (resolve, reject) => {
         try {
-            let users = await db.User.findAll({
-                raw: true,
-            }
-            );
+            let users = await db.User.findAll()
 
             resolve(users)
 
@@ -58,8 +55,7 @@ let getUserInfoById = (userId) => {
     return new Promise(async (resolve, reject) => {
         try {
             let user = await db.User.findOne({
-                where: { id: userId },
-                raw: true,
+                where: { id: userId }
             })
 
             if (user) {
@@ -77,7 +73,8 @@ let updateUserData = (data) => {
     return new Promise(async (resolve, reject) => {
         try {
             let user = await db.User.findOne({
-                where: { id: data.id }
+                where: { id: data.id },
+                raw: false
             })
             if (user) {
                 user.firstName = data.firstName
